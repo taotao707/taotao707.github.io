@@ -7,15 +7,15 @@
   
   <title>入门C++(一) 新建class类的三个建议定义的函数 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="C++ 中class定义新类建议三函数1.default constructordefault constructor的重要性自不必说，当你想新建一个对象却不想费劲传入一些参数时，class new将自动调用此建造器函数。  2.virtual destructorvirtual destructor的主要作用是在使用类的多态性时，可以为每个父类下的子类单独提供一个析构函数。 例如 12Base">
+  <meta name="description" content="C++ 中class定义新类建议三函数1.default constructordefault constructor的重要性自不必说，当你想新建一个对象却不想费劲传入一些参数时，class new将自动调用此建造器函数。 2.virtual destructorvirtual destructor的主要作用是在使用类的多态性时，可以为每个父类下的子类单独提供一个析构函数。例如 Base *p &#x3D;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="入门C++(一) 新建class类的三个建议定义的函数">
 <meta property="og:url" content="http://example.com/2022/11/04/C/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="C++ 中class定义新类建议三函数1.default constructordefault constructor的重要性自不必说，当你想新建一个对象却不想费劲传入一些参数时，class new将自动调用此建造器函数。  2.virtual destructorvirtual destructor的主要作用是在使用类的多态性时，可以为每个父类下的子类单独提供一个析构函数。 例如 12Base">
+<meta property="og:description" content="C++ 中class定义新类建议三函数1.default constructordefault constructor的重要性自不必说，当你想新建一个对象却不想费劲传入一些参数时，class new将自动调用此建造器函数。 2.virtual destructorvirtual destructor的主要作用是在使用类的多态性时，可以为每个父类下的子类单独提供一个析构函数。例如 Base *p &#x3D;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-11-04T12:15:42.000Z">
-<meta property="article:modified_time" content="2022-11-04T13:04:40.123Z">
+<meta property="article:modified_time" content="2022-11-04T13:20:00.642Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -88,17 +88,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="C-中class定义新类建议三函数"><a href="#C-中class定义新类建议三函数" class="headerlink" title="C++ 中class定义新类建议三函数"></a>C++ 中class定义新类建议三函数</h1><h2 id="1-default-constructor"><a href="#1-default-constructor" class="headerlink" title="1.default constructor"></a>1.default constructor</h2><pre><code>default constructor的重要性自不必说，当你想新建一个对象却不想费劲传入一些参数时，class new将自动调用此建造器函数。
+        <h1 id="C-中class定义新类建议三函数"><a href="#C-中class定义新类建议三函数" class="headerlink" title="C++ 中class定义新类建议三函数"></a>C++ 中class定义新类建议三函数</h1><h2 id="1-default-constructor"><a href="#1-default-constructor" class="headerlink" title="1.default constructor"></a>1.default constructor</h2><p>default constructor的重要性自不必说，当你想新建一个对象却不想费劲传入一些参数时，class new将自动调用此建造器函数。</p>
+<h2 id="2-virtual-destructor"><a href="#2-virtual-destructor" class="headerlink" title="2.virtual destructor"></a>2.virtual destructor</h2><p>virtual destructor的主要作用是在使用类的多态性时，可以为每个父类下的子类单独提供一个析构函数。<br>例如</p>
+<pre><code>Base *p = new Derived;
+delete p;
 </code></pre>
-<h2 id="2-virtual-destructor"><a href="#2-virtual-destructor" class="headerlink" title="2.virtual destructor"></a>2.virtual destructor</h2><pre><code>virtual destructor的主要作用是在使用类的多态性时，可以为每个父类下的子类单独提供一个析构函数。
-例如
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Base *p = new Derived;</span><br><span class="line">delete p;</span><br></pre></td></tr></table></figure>
-若没有virtual destructor，则会调用父类的析构函数，而不会执行子类的析构函数，子类析构函数中的一些工作将被忽略。
+<p>若没有virtual destructor，则会调用父类的析构函数，而不会执行子类的析构函数，子类析构函数中的一些工作将被忽略。</p>
+<h2 id="3-cpoy-constructor"><a href="#3-cpoy-constructor" class="headerlink" title="3.cpoy constructor"></a>3.cpoy constructor</h2><p>cpoy constructor的作用可由如下例子得出</p>
+<pre><code>Base b;
+Base a = b;
 </code></pre>
-<h2 id="3-cpoy-constructor"><a href="#3-cpoy-constructor" class="headerlink" title="3.cpoy constructor"></a>3.cpoy constructor</h2><pre><code>cpoy constructor的作用可由如下例子得出
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Base b;</span><br><span class="line">Base a = b;</span><br></pre></td></tr></table></figure>
-若Base类中没有cpoy constructor，系统则会自动调用一个默认的cpoy constructor，这显然不是被我们所控制的，因此建议自行新建一个cpoy constructor，例如
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Base&#123;</span><br><span class="line">public: </span><br><span class="line">    Base(const Base&amp; p)&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>若Base类中没有cpoy constructor，系统则会自动调用一个默认的cpoy constructor，这显然不是被我们所控制的，因此建议自行新建一个cpoy constructor，例如</p>
+<pre><code>class Base&#123;
+public: 
+    Base(const Base&amp; p)&#123;
+
+    &#125;
+&#125;
 </code></pre>
 
       
