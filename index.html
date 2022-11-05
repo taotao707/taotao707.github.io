@@ -86,7 +86,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="入门C-二-copy-destructor拷贝构造器与operator-赋值运算符重载"><a href="#入门C-二-copy-destructor拷贝构造器与operator-赋值运算符重载" class="headerlink" title="入门C++(二) copy destructor拷贝构造器与operator=赋值运算符重载"></a>入门C++(二) copy destructor拷贝构造器与operator=赋值运算符重载</h1><h2 id="copy-constructor拷贝构造器"><a href="#copy-constructor拷贝构造器" class="headerlink" title="copy constructor拷贝构造器"></a>copy constructor拷贝构造器</h2><pre><code>Base(const Base &amp;obj) &#123; //obj是用于初始化另一个对象的对象的引用。
+        <h2 id="copy-constructor拷贝构造器"><a href="#copy-constructor拷贝构造器" class="headerlink" title="copy constructor拷贝构造器"></a>copy constructor拷贝构造器</h2><pre><code>Base(const Base &amp;obj) &#123; //obj是用于初始化另一个对象的对象的引用。
     i = obj.v;
     std::cout &lt;&lt; &quot;Copy constructor called&quot; &lt;&lt; std:endl;
 &#125;
@@ -106,7 +106,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/05/%E5%85%A5%E9%97%A8C-%E4%BA%8C-copy-destructor%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%99%A8%E4%B8%8Eoperator-%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" data-id="cla3dxalt0001m8wd9ueh1a26" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/11/05/%E5%85%A5%E9%97%A8C-%E4%BA%8C-copy-destructor%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%99%A8%E4%B8%8Eoperator-%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" data-id="cla3e0atl0001m4wdbicy6i1l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -138,7 +138,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="C-中class定义新类建议三函数"><a href="#C-中class定义新类建议三函数" class="headerlink" title="C++ 中class定义新类建议三函数"></a>C++ 中class定义新类建议三函数</h1><h2 id="1-default-constructor"><a href="#1-default-constructor" class="headerlink" title="1.default constructor"></a>1.default constructor</h2><p>default constructor的重要性自不必说，当你想新建一个对象却不想费劲传入一些参数时，class new将自动调用此建造器函数。</p>
+        <h2 id="1-default-constructor"><a href="#1-default-constructor" class="headerlink" title="1.default constructor"></a>1.default constructor</h2><p>default constructor的重要性自不必说，当你想新建一个对象却不想费劲传入一些参数时，class new将自动调用此建造器函数。</p>
 <h2 id="2-virtual-destructor"><a href="#2-virtual-destructor" class="headerlink" title="2.virtual destructor"></a>2.virtual destructor</h2><p>virtual destructor的主要作用是在使用类的多态性时，可以为每个父类下的子类单独提供一个析构函数。<br>例如</p>
 <pre><code>Base *p = new Derived;
 delete p;
@@ -160,7 +160,7 @@ public:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/04/C/" data-id="cla3dxalm0000m8wd9j8shp82" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/11/04/C/" data-id="cla3e0ath0000m4wd7bq32nw9" class="article-share-link">Share</a>
       
       
     </footer>
